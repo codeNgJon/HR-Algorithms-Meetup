@@ -28,7 +28,29 @@
 */
 
 var integrate = function() {
+  var matrix = [];
+  var wndw = getGraphDimensions();
 
-  return 42;
 
+  var width = wndw.x.max - wndw.x.min;
+  var height = wndw.y.max - wndw.y.min;
+  
+
+  for(var i=0; i<1000; i++){
+    var xPoint = (Math.random()*width)+wndw.x.min;
+    var yPoint = (Math.random()*height)+wndw.y.min;
+    matrix.push(evalPoint(xPoint,yPoint));
+
+  }
+  var within = 0;
+  for(i=0; i<matrix.length; i++){
+    if(matrix[i]){
+        within++;
+    }
+  }
+var ratio = within/matrix.length;
+  var area = ratio*width*height;
+  return area;
 };
+
+
